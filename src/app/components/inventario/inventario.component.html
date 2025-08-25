@@ -1,0 +1,76 @@
+<div style="margin: 30px;">
+  <!-- Modal de registrar venta -->
+  <app-registrar-venta (ventaAgregada)="cargarMedicamentos()" #modalVenta></app-registrar-venta>
+
+
+  <!-- modal -->
+  <app-medicamento-form (medicamentoAgregado)="cargarMedicamentos()" #modal></app-medicamento-form>
+  <p-confirmDialog></p-confirmDialog>
+  <p-toast></p-toast>
+
+  <button
+  pButton
+  type="button"
+  label="Ver Resumen de Ventas"
+  icon="pi pi-chart-line"
+  class="p-button-info mb-3"
+  [routerLink]="['/resumen-ventas']">
+</button>
+
+
+  <!-- botón agregar -->
+  <div style="text-align: right; margin-bottom: 10px;">
+    <button pButton type="button" label="Agregar Medicamento" icon="pi pi-plus" class="p-button-primary p-button-sm"
+      (click)="modal.showDialog()">
+    </button>
+  </div>
+
+  <p-table [value]="medicamentos" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5,10,20]"
+    responsiveLayout="scroll" class="p-datatable-sm">
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 20%;">Nombre</th>
+        <th style="width: 15%;">Laboratorio</th>
+        <th style="width: 12%;">F. Fabricación</th>
+        <th style="width: 12%;">F. Vencimiento</th>
+        <th style="width: 8%; text-align: center;">Stock</th>
+        <th style="width: 10%; text-align: center;">Valor Unitario</th>
+        <th style="width: 15%; text-align: center;">Acciones</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-medicamento>
+      <tr>
+        <td>{{ medicamento.nombre }}</td>
+        <td>{{ medicamento.laboratorio }}</td>
+        <td>{{ medicamento.fechaFabricacion | date: 'MM/dd/yyyy'}}</td>
+        <td>{{ medicamento.fechaVencimiento | date: 'MM/dd/yyyy'}}</td>
+        <td style="text-align: center;">{{ medicamento.cantidadStock }}</td>
+        <td style="text-align: center;">
+          {{ medicamento.valorUnitario | currency:'COP ':'symbol':'1.0-0' }}
+        </td>
+        <td style="text-align: center;">
+          <button
+            pButton
+            type="button"
+            icon="pi pi-dollar"
+            class="p-button-rounded p-button-sm p-button-success p-mr-1"
+            style="width:40px; height:40px; padding:0; margin-right: 5px;"
+            (click)="modalVenta.showDialog(medicamento)"
+            pTooltip="Vender"
+            [disabled]="medicamento.cantidadStock === 0">
+          </button>
+
+
+          <button pButton type="button" icon="pi pi-pencil" class="p-button-rounded p-button-sm p-button-warning p-mr-1"
+            style="width:40px; height:40px; padding:0; margin-right: 5px;"
+            (click)="modal.showDialog(medicamento)" pTooltip="Editar"></button>
+
+          <button pButton type="button" icon="pi pi-trash" class="p-button-rounded p-button-sm p-button-danger"
+            style="width:40px; height:40px; padding:0;"
+            (click)="eliminarMedicamento(medicamento)" pTooltip="Eliminar" tooltipPosition="left"></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

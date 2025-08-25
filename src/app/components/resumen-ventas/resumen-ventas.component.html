@@ -1,0 +1,46 @@
+<div style="margin: 30px;">
+  <!-- Mensajes -->
+  <p-toast></p-toast>
+
+  <!-- botón volver al inventario -->
+  <div style="margin-bottom: 15px;">
+    <button
+      pButton
+      type="button"
+      label="Ver Inventario"
+      icon="pi pi-box"
+      class="p-button-secondary"
+      [routerLink]="['/inventario']">
+    </button>
+  </div>
+
+  <!-- Tabla de ventas -->
+  <p-table [value]="ventas" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5,10,20]"
+    responsiveLayout="scroll" class="p-datatable-sm">
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 20%;">Fecha</th>
+        <th style="width: 20%;">Hora</th>
+        <th style="width: 15%;">Medicamento ID</th>
+        <th style="width: 10%; text-align: center;">Cantidad</th>
+        <th style="width: 15%; text-align: center;">Valor Unitario</th>
+        <th style="width: 20%; text-align: center;">Valor Total</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-venta>
+      <tr>
+        <td>{{ venta.fechaHora | date: 'MM/dd/yyyy' }}</td>
+        <td>{{ venta.fechaHora | date: 'HH:mm:ss' }}</td>
+        <td>{{ venta.medicamentoId }}</td>
+        <td style="text-align: center;">{{ venta.cantidad }}</td>
+        <td style="text-align: center;">
+          {{ venta.valorUnitario | currency:'COP ':'symbol':'1.0-0' }}
+        </td>
+        <td style="text-align: center; font-weight: bold;">
+          {{ venta.valorTotal | currency:'COP ':'symbol':'1.0-0' }}
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

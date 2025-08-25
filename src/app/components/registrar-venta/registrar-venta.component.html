@@ -1,0 +1,96 @@
+<p-toast></p-toast>
+
+<p-dialog
+  header="Registrar Venta"
+  [(visible)]="display"
+  [modal]="true"
+  [closable]="true"
+  [style]="{width: '450px'}">
+
+  <div class="p-fluid">
+
+    <!-- Fecha -->
+    <div class="p-field" style="margin-top: 10px; margin-bottom: 10px;">
+      <label for="fecha">Fecha</label>
+      <input
+        id="fecha"
+        type="text"
+        pInputText
+        disabled
+        [value]="venta.fechaHora | date:'dd/MM/yyyy HH:mm'"
+        readonly
+      />
+    </div>
+
+    <!-- Medicamento -->
+    <div class="p-field" style="margin-top: 10px; margin-bottom: 10px;">
+      <label for="medicamento">Medicamento</label>
+      <input
+        id="medicamento"
+        type="text"
+        pInputText
+        disabled
+        [value]="medicamento?.nombre"
+        readonly
+      />
+    </div>
+
+    <!-- Cantidad -->
+    <div class="p-field" style="margin-top: 10px; margin-bottom: 10px;">
+      <label for="cantidad">Cantidad</label>
+      <input
+        id="cantidad"
+        type="number"
+        pInputText
+        [(ngModel)]="venta.cantidad"
+        (ngModelChange)="calcularTotal()"
+        min="1"
+      />
+    </div>
+
+    <!-- Valor Unitario -->
+    <div class="p-field" style="margin-top: 10px; margin-bottom: 10px;">
+      <label for="valorUnitario">Valor Unitario</label>
+      <input
+        id="valorUnitario"
+        type="text"
+        disabled
+        pInputText
+        [value]="venta.valorUnitario | currency:'COP ':'symbol':'1.0-0'"
+        readonly
+      />
+    </div>
+
+    <!-- Valor Total -->
+    <div class="p-field" style="margin-top: 10px; margin-bottom: 10px;">
+      <label for="valorTotal">Valor Total</label>
+      <input
+        id="valorTotal"
+        type="text"
+        pInputText
+        disabled
+        [value]="venta.valorTotal | currency:'COP ':'symbol':'1.0-0'"
+        readonly
+      />
+    </div>
+
+  </div>
+
+  <p-footer>
+    <button
+      pButton
+      type="button"
+      label="Cancelar"
+      class="p-button-text"
+      (click)="hideDialog()">
+    </button>
+
+    <button
+      pButton
+      type="button"
+      label="Registrar"
+      class="p-button-primary"
+      (click)="registrarVenta()">
+    </button>
+  </p-footer>
+</p-dialog>

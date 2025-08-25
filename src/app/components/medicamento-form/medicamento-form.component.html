@@ -1,0 +1,109 @@
+<p-toast></p-toast>
+
+<p-dialog
+  [header]="medicamentoActual ? 'Actualizar Medicamento' : 'Agregar Medicamento'"
+  [(visible)]="display"
+  [modal]="true"
+  [closable]="true"
+  [style]="{width: '450px'}"
+>
+  <form #form="ngForm" class="p-fluid" (ngSubmit)="guardarMedicamento(form)">
+
+    <!-- Nombre -->
+    <div class="field">
+      <label for="nombre">Nombre</label>
+      <input
+        id="nombre"
+        type="text"
+        pInputText
+        [(ngModel)]="medicamento.nombre"
+        name="nombre"
+        required
+      />
+    </div>
+
+    <!-- Laboratorio -->
+    <div class="field">
+      <label for="laboratorio">Laboratorio</label>
+      <input
+        id="laboratorio"
+        type="text"
+        pInputText
+        [(ngModel)]="medicamento.laboratorio"
+        name="laboratorio"
+        required
+      />
+    </div>
+
+    <!-- Fecha Fabricación -->
+    <div class="field">
+      <label for="fechaFabricacion">Fecha de fabricación</label>
+      <p-calendar
+        id="fechaFabricacion"
+        [(ngModel)]="medicamento.fechaFabricacion"
+        name="fechaFabricacion"
+        dateFormat="yy-mm-dd"
+        showIcon="true"
+        required
+      ></p-calendar>
+    </div>
+
+    <!-- Fecha Vencimiento -->
+    <div class="field">
+      <label for="fechaVencimiento">Fecha de vencimiento</label>
+      <p-calendar
+        id="fechaVencimiento"
+        [(ngModel)]="medicamento.fechaVencimiento"
+        name="fechaVencimiento"
+        dateFormat="yy-mm-dd"
+        showIcon="true"
+        required
+      ></p-calendar>
+    </div>
+
+    <!-- Cantidad en stock -->
+    <div class="field">
+      <label for="cantidadStock">Cantidad en stock</label>
+      <p-inputNumber
+        id="cantidadStock"
+        [(ngModel)]="medicamento.cantidadStock"
+        name="cantidadStock"
+        [min]="0"
+        required
+      ></p-inputNumber>
+    </div>
+
+    <!-- Valor unitario -->
+    <div class="field">
+      <label for="valorUnitario">Valor unitario</label>
+      <p-inputNumber
+        id="valorUnitario"
+        [(ngModel)]="medicamento.valorUnitario"
+        name="valorUnitario"
+        [min]="1"
+        mode="currency"
+        currency="COP"
+        locale="es-CO"
+        required
+      ></p-inputNumber>
+    </div>
+
+    <!-- Footer -->
+    <p-footer class="flex justify-end gap-2">
+      <button
+        pButton
+        type="button"
+        label="Cancelar"
+        class="p-button-text"
+        (click)="hideDialog()"
+      ></button>
+      <button
+        pButton
+        type="submit"
+        [label]="medicamentoActual ? 'Actualizar' : 'Guardar'"
+        class="p-button-primary"
+        [disabled]="!form.valid"
+      ></button>
+    </p-footer>
+  </form>
+</p-dialog>

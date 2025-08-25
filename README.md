@@ -1,27 +1,106 @@
-# KonexInventario
+# KonexInventario - Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.17.
+Este proyecto fue generado con [Angular CLI](https://github.com/angular/angular-cli) versión 17.3.17.
+Es la interfaz de usuario para el sistema de inventario Konex.
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Requisitos
 
-## Code scaffolding
+* Node.js (versión recomendada: 18+)
+* Angular CLI (opcional, si quieres usar comandos de Angular)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+---
 
-## Build
+## Instalación
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. Clonar el repositorio:
 
-## Running unit tests
+```bash
+git clone https://github.com/usuario/nombre-repo.git
+cd nombre-repo
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+2. Instalar dependencias:
 
-## Running end-to-end tests
+```bash
+npm install
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+---
 
-## Further help
+## Servidor de desarrollo
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Para levantar la aplicación en modo desarrollo:
+
+```bash
+ng serve
+```
+
+Luego abre tu navegador en:
+
+```
+http://localhost:4200/
+```
+
+La aplicación se recargará automáticamente si realizas cambios en los archivos fuente.
+
+---
+
+## Generar código
+
+Para generar un nuevo componente:
+
+```bash
+ng generate component nombre-componente
+```
+
+También puedes generar **directivas, pipes, servicios, clases, guards, interfaces, enums o módulos** con:
+
+```bash
+ng generate directive|pipe|service|class|guard|interface|enum|module nombre
+```
+
+---
+
+## Construcción (Build)
+
+Para compilar la aplicación:
+
+```bash
+ng build
+```
+
+Los archivos generados se almacenarán en el directorio `dist/`.
+
+---
+
+## Pruebas unitarias
+
+Ejecutar pruebas unitarias usando [Karma](https://karma-runner.github.io):
+
+```bash
+ng test
+```
+
+---
+
+## Pruebas end-to-end
+
+Ejecutar pruebas end-to-end con la plataforma de tu elección (requiere paquete adicional):
+
+```bash
+ng e2e
+```
+
+---
+
+## Ayuda adicional
+
+Para más información sobre Angular CLI:
+
+```bash
+ng help
+```
+
+O revisa la documentación oficial: [Angular CLI Overview and Command Reference](https://angular.io/cli)
