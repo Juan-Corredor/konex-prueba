@@ -1,4 +1,4 @@
-# KonexInventario - Frontend
+# Inventario - Frontend
 
 Este proyecto fue generado con [Angular CLI](https://github.com/angular/angular-cli) versión 17.3.17.
 Es la interfaz de usuario para el sistema de inventario Konex.
